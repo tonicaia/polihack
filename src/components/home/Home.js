@@ -20,7 +20,6 @@ function Home() {
 
   const selectItemFromSearch = item => {
     setItem(elements.find(element => element.name === item))
-    console.log(this.item);
   }
 
   return(

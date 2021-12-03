@@ -59,6 +59,8 @@ class Dashboard extends Component {
     render() { 
         return ( 
             <div>
+                  <br />
+
                 <h1>Your stats:</h1>
                 <div style={{height:"50px"}}></div>
                 <Example/>
@@ -78,6 +80,7 @@ class Dashboard extends Component {
                     </Card>
                     </Col>
                 </Row>
+                <br />
                 <Row>
                 
                     <Col lg={6}>
