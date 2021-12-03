@@ -1,7 +1,7 @@
-import './App.css';
 import Dashboard from './Dashboard';
 import Home from './components/Home';
 import { Routes, Route, Link } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <header className="App-header">
         <Routes>
           <Route path="/" element={<Home />} />
-
+          <Route path="/statistics" element={<Dashboard/>}/>
         </Routes>
       </header>
     </div>
