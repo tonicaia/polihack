@@ -27,6 +27,7 @@ function Example() {
     const [show, setShow] = useState(true);
   
     return (
+      <Container>
       <Row>
         <Col xs={6}>
             <ToastContainer position="top-end" style={{zIndex: 1113, marginTop:20, marginRight:20}}>
@@ -36,7 +37,7 @@ function Example() {
                 src="holder.js/20x20?text=%20"
                 className="rounded me-2"
                 alt=""
-              />
+                />
               <strong className="me-auto">Congratulations!</strong>
               <small>11 mins ago</small>
             </Toast.Header>
@@ -45,6 +46,7 @@ function Example() {
           </ToastContainer>
         </Col>
       </Row>
+      </Container>
     );
   }
   

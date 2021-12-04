@@ -24,7 +24,7 @@ function Home() {
 
   return(
     <div>
-      <Container>
+      <Container className="justify-content-md-center">
         <Row>
           <Col lg={6}>
             <Autocomplete
