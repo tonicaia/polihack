@@ -6,6 +6,7 @@ import Home from './components/home/Home';
 import Price from './components/price/Price';
 import Calculator from './components/calculator/Calculator';
 import Landing from './components/landing/Landing';
+import Ranking from './components/ranking/Ranking';
 import { useEffect } from "react";
 
 
@@ -64,6 +65,7 @@ function App() {
         {user && !loading && <Nav.Link href="statistics">Statistics</Nav.Link>}
         <Nav.Link href="pricing">Pricing</Nav.Link>
         <Nav.Link href="news">Be aware !</Nav.Link>
+        <Nav.Link href="rankings">Rankings</Nav.Link>
       </div>
       <div className="nav-login">
         {user ? <Button onClick={signOut}> Sign out </Button> : <Button onClick={signInWithGoogle}>Sign in</Button>}
@@ -78,6 +80,7 @@ function App() {
           <Route path="/calculator" element={<Calculator />} />
           <Route path="/news" element={<News />} />
           <Route path="/" element={<Landing />} />
+          <Route path="/rankings" element={<Ranking />} />
         </Routes>
       </header>
     </div>

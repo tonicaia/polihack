@@ -3,7 +3,6 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import {Image} from 'react-bootstrap'
 import { Row } from 'react-bootstrap';
-import bgimg from '../../assets/bg.jpg'
 import './News.scss'
 const API_KEY = "77942a49037a4103a810e5197200c66a"
 const URL = "https://newsapi.org/v2/everything?q=(pollution OR sustainability OR forest OR waste)&sortBy=popularity&apiKey=" + API_KEY
