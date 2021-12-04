@@ -4,10 +4,13 @@ import Autocomplete from '@mui/material/Autocomplete';
 import Card from "react-bootstrap/Card";
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import { Col, Row, Container, Button, CardGroup } from 'react-bootstrap'
+import { Col, Row, Container, Button, CardGroup,Carousel } from 'react-bootstrap'
 import { useState } from "react";
 import { elements } from "./obj";
-
+import s1 from "../../assets/s1.png"
+import s2 from "../../assets/s2.png"
+import s3 from "../../assets/s3.png"
+import s4 from "../../assets/s4.png"
 
 function Calculator() {
   const list = elements;
@@ -15,7 +18,6 @@ function Calculator() {
   const [item, setItem] = useState({})
   const [worstItem, setWorstItem] = useState({})
   const [betterItem, setBetterItem] = useState({})
-
   const selectItemFromSearch = item => {
     const currentItem = list.find(list => list.name === item)
     setItem(currentItem)
@@ -97,6 +99,51 @@ function Calculator() {
             </CardGroup>
           </Row>
         }
+        <br />
+          <br />
+        <Row>
+        <Carousel>
+  <Carousel.Item>
+    <img
+      className="d-block w-100"
+      src={s1}
+      alt="First slide"
+    />
+    <Carousel.Caption>
+    </Carousel.Caption>
+  </Carousel.Item>
+  <Carousel.Item>
+    <img
+      className="d-block w-100"
+      src={s2}
+      alt="Second slide"
+    />
+
+    <Carousel.Caption>
+    </Carousel.Caption>
+  </Carousel.Item>
+  <Carousel.Item>
+    <img
+      className="d-block w-100"
+      src={s3}
+      alt="Third slide"
+    />
+
+    <Carousel.Caption>
+         </Carousel.Caption>
+  </Carousel.Item>
+  <Carousel.Item>
+    <img
+      className="d-block w-100"
+      src={s4}
+      alt="Third slide"
+    />
+
+    <Carousel.Caption>
+    </Carousel.Caption>
+  </Carousel.Item>
+</Carousel>
+        </Row>
       </Container>
     </div>
   )
