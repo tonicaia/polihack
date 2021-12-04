@@ -56,13 +56,13 @@ function App() {
       <header className="App-header">
       <Navbar bg="dark" variant="dark" sticky="top" >
     <Container>
-    <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+    <Navbar.Brand href="#home">WasteCan</Navbar.Brand>
     <Nav className="me-auto">
       <div className="d-flex nav-main-sections">
         <Nav.Link href="/">Home</Nav.Link>
+        <Nav.Link href="calculator">Calculator</Nav.Link>
         { user && !loading ? <Nav.Link href="statistics">Statistics</Nav.Link> : <Nav.Link href="/">Statistics</Nav.Link>}
         <Nav.Link href="pricing">Pricing</Nav.Link>
-        <Nav.Link href="calculator">Calculator</Nav.Link>
       </div>
       <div className="nav-login">
         {user ? <Button onClick={signOut}> Sign out </Button> : <Button onClick={signInWithGoogle}>Sign in</Button>}
