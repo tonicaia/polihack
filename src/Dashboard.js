@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import ApexCharts from 'apexcharts'
 import Chart from 'react-apexcharts'
 import { Card, ListGroup, Row, Col, Container, Toast, Button, ToastContainer, Accordion, Image } from 'react-bootstrap'
@@ -8,6 +8,25 @@ import month from './assets/1m.png'
 import tmonths from './assets/3m.png'
 import smonths from './assets/6m.png'
 import year from './assets/1y.png'
+import { Navigate } from "react-router-dom";
+import firebase from 'firebase/compat/app';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
+import 'firebase/compat/firestore';
+import 'firebase/compat/auth';
+
+
+firebase.initializeApp({
+  apiKey: "AIzaSyCr7AIVDHhdi5fzKQqKt_kYz7-lWp5JvFk",
+  authDomain: "wastecan-55bcc.firebaseapp.com",
+  projectId: "wastecan-55bcc",
+  storageBucket: "wastecan-55bcc.appspot.com",
+  messagingSenderId: "1055838897299",
+  appId: "1:1055838897299:web:344fdbb26b11915550b966"
+})
+const firestore = firebase.firestore();
+const userID = localStorage.getItem("userId")
+
+
 const optionsPie = { labels: ["Food", "Electronics", "Clothes", "Plastics", "Others"] };
 const seriesPie = [4, 5, 6, 1, 5]; //our data
 
@@ -29,7 +48,17 @@ const optionsProgress = {
 };
 
 function Example() {
+  const entitiesRef = firestore.collection('entities').where("userId", "==", userID);
+  const [entities] = useCollectionData(entitiesRef, { idField: 'id' });
+
   const [show, setShow] = useState(true);
+
+  useEffect(() => {
+
+    return () => {
+
+    };
+  });
 
   return (
     <Container>

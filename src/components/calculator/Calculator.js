@@ -5,16 +5,47 @@ import Card from "react-bootstrap/Card";
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import { Col, Row, Container, Button, CardGroup } from 'react-bootstrap'
-import { useState } from "react";
 import { elements } from "./obj";
+import { useState, useEffect } from "react";
+
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
+import 'firebase/compat/auth';
 
 
-function Calculator() {
+firebase.initializeApp({
+  apiKey: "AIzaSyCr7AIVDHhdi5fzKQqKt_kYz7-lWp5JvFk",
+  authDomain: "wastecan-55bcc.firebaseapp.com",
+  projectId: "wastecan-55bcc",
+  storageBucket: "wastecan-55bcc.appspot.com",
+  messagingSenderId: "1055838897299",
+  appId: "1:1055838897299:web:344fdbb26b11915550b966"
+})
+const firestore = firebase.firestore();
+let userID = localStorage.getItem("userId");
+
+function Calculator(props) {
   const list = elements;
-
+  const entitiesRef = firestore.collection('entities');
   const [item, setItem] = useState({})
+  const [quantity, setQuantity] = useState(0)
   const [worstItem, setWorstItem] = useState({})
   const [betterItem, setBetterItem] = useState({})
+
+  const createEntity = async (e) => {
+    e.preventDefault();
+
+    await entitiesRef.add({
+      name: item.name,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      category: item.category,
+      quantity: quantity,
+      footprint: item.footprint,
+      userId: userID
+    })
+
+    setQuantity(0);
+  }
 
   const selectItemFromSearch = item => {
     const currentItem = list.find(list => list.name === item)
@@ -27,7 +58,11 @@ function Calculator() {
     }
   }
 
-  return (
+  useEffect(() => {
+    userID = localStorage.getItem("userId");
+  });
+
+  return(
     <div>
       <br />
       <br />
@@ -74,12 +109,13 @@ function Calculator() {
                         shrink: true,
                       }}
                       variant="standard"
+                      onChange={(e) => setQuantity(e.target.value)}
                     />
                   </Card.Text>
 
                   <br />
                   <span>
-                    <Button variant="primary">Commit</Button>
+                    <Button variant="primary" onClick={createEntity}>Commit</Button>
                     <Button variant="primary" disabled={item.category === "electronics" ? "true" : "false"} style={{ float: "right" }}>Let us pick it up</Button>
                   </span>
                 </Card.Body>
