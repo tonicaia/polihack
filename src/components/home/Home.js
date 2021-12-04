@@ -19,7 +19,8 @@ function Home() {
   const [item, setItem] = useState({})
 
   const selectItemFromSearch = item => {
-    setItem(elements.find(element => element.name === item))
+    const currentItem = elements.find(element => element.name === item)
+    setItem(currentItem)
   }
 
   return(
@@ -29,7 +30,7 @@ function Home() {
           <Col lg={6}>
             <Autocomplete
               id="object-search-field"
-              objectSearch
+              freeSolo
               options={elements.map((option) => option.name)}
               onChange={(event, value) => selectItemFromSearch(value)}
               renderInput={(params) => <TextField {...params} label="Search for an object" />}
