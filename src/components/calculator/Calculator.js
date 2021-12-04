@@ -19,12 +19,12 @@ function Calculator() {
   const selectItemFromSearch = item => {
     const currentItem = list.find(list => list.name === item)
     setItem(currentItem)
-    if(currentItem) {
+    if (currentItem) {
       const betterItem = list.find(el => el.footprint < currentItem.footprint)
       setBetterItem(betterItem)
       const worstItem = list.find(el => el.footprint > currentItem.footprint)
       setWorstItem(worstItem)
-    } 
+    }
   }
 
   return (
@@ -48,7 +48,7 @@ function Calculator() {
         {item && item.name &&
           <Row>
             <CardGroup>
-              <Card variant="outlined" style={{ background: "#90EE90",maxHeight:"200px" }}>
+              <Card variant="outlined" style={{ background: "#90EE90", maxHeight: "200px" }}>
                 <Card.Header as="h5">{betterItem.name}</Card.Header>
                 <Card.Body>
                   <Card.Title>Carbon Footprint: {betterItem.footprint} kgCO2</Card.Title>
@@ -58,7 +58,7 @@ function Calculator() {
                 </Card.Body>
               </Card>
 
-              <Card  style={{marginLeft: "10px", marginRight: "10px"}}>
+              <Card style={{ marginLeft: "10px", marginRight: "10px" }}>
                 <Card.Header as="h5">{item.name}</Card.Header>
                 <Card.Body>
                   <Card.Title>Carbon Footprint: {item.footprint} kgCO2</Card.Title>
@@ -79,13 +79,13 @@ function Calculator() {
 
                   <br />
                   <span>
-                  <Button variant="primary">Commit</Button>
-                  <Button variant="primary" disabled={item.category === "electronics"? "true" : "false"} style={{float:"right"}}>Let us pick it up</Button>
+                    <Button variant="primary">Commit</Button>
+                    <Button variant="primary" disabled={item.category === "electronics" ? "true" : "false"} style={{ float: "right" }}>Let us pick it up</Button>
                   </span>
                 </Card.Body>
               </Card>
 
-              <Card variant="outlined" style={{background:"#FF7F7F", maxHeight:"200px"}}>
+              <Card variant="outlined" style={{ background: "#FF7F7F", maxHeight: "200px" }}>
                 <Card.Header as="h5">{worstItem.name}</Card.Header>
                 <Card.Body>
                   <Card.Title>Carbon Footprint: {worstItem.footprint} kgCO2</Card.Title>
