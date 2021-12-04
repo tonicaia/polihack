@@ -19,6 +19,7 @@ import 'firebase/analytics';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+import News from './components/news/News';
 
 firebase.initializeApp({
   apiKey: "AIzaSyCr7AIVDHhdi5fzKQqKt_kYz7-lWp5JvFk",
@@ -56,13 +57,13 @@ function App() {
       <header className="App-header">
       <Navbar bg="dark" variant="dark" sticky="top" >
     <Container>
-    <Navbar.Brand href="#home">WasteCan</Navbar.Brand>
+    <Navbar.Brand href="/">WasteCan</Navbar.Brand>
     <Nav className="me-auto">
       <div className="d-flex nav-main-sections">
-        <Nav.Link href="/">Home</Nav.Link>
-        <Nav.Link href="calculator">Calculator</Nav.Link>
-        { user && !loading ? <Nav.Link href="statistics">Statistics</Nav.Link> : <Nav.Link href="/">Statistics</Nav.Link>}
+        {user && !loading && <Nav.Link href="calculator">Calculator</Nav.Link>}
+        {user && !loading && <Nav.Link href="statistics">Statistics</Nav.Link>}
         <Nav.Link href="pricing">Pricing</Nav.Link>
+        <Nav.Link href="news">Be aware !</Nav.Link>
       </div>
       <div className="nav-login">
         {user ? <Button onClick={signOut}> Sign out </Button> : <Button onClick={signInWithGoogle}>Sign in</Button>}
@@ -75,6 +76,7 @@ function App() {
           <Route path="/statistics" element={<Dashboard />}/>
           <Route path="/pricing" element={<Price />} />
           <Route path="/calculator" element={<Calculator />} />
+          <Route path="/news" element={<News />} />
           <Route path="/" element={<Landing />} />
         </Routes>
       </header>
