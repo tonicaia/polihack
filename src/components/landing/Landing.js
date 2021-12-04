@@ -1,9 +1,10 @@
 import React, { Component, useState } from 'react';
 import ApexCharts from 'apexcharts'
 import Chart from 'react-apexcharts'
-import { Card, ListGroup, Row, Col, Container, Toast, Button, ToastContainer } from 'react-bootstrap'
+import { Card, ListGroup, Row, Col, Container, Toast, Button, ToastContainer, Image } from 'react-bootstrap'
 import "./Landing.css"
 import logo from "./logo.png"
+import team from "../../assets/team.jfif"
 
 class Landing extends Component {
   constructor(props) {
@@ -54,7 +55,8 @@ class Landing extends Component {
   <div class="block">
     <p>We are a group of 4 students, ready to offer to our users the best experience through decreasing waste of their daily activities.</p>
     <p class="line-break margin-top-10"></p>
-    <p class="margin-top-10">Toni, Diana, Flaviu, Scriti and add some pics.</p>
+    <p class="margin-top-10">Toni, Diana, Flaviu, Scriti</p>
+    <Image style={{maxWidth:"70%"}} src={team}></Image>
   </div>
 </section>
 
