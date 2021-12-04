@@ -1,8 +1,13 @@
 import React, { Component,useState } from 'react';
 import ApexCharts from 'apexcharts'
 import Chart from 'react-apexcharts'
-import {Card,ListGroup,Row,Col,Container,Toast,Button, ToastContainer} from 'react-bootstrap'
-
+import {Card,ListGroup,Row,Col,Container,Toast,Button, ToastContainer,Accordion,Image} from 'react-bootstrap'
+import './Dashboard.css'
+import week from './assets/1w.png'
+import month from './assets/1m.png'
+import tmonths from './assets/3m.png'
+import smonths from './assets/6m.png'
+import year from './assets/1y.png'
 const optionsPie = { labels: ["Food", "Electronics", "Clothes", "Plastics", "Others"] };
 const seriesPie = [4, 5, 6, 1, 5]; //our data
   
@@ -73,12 +78,52 @@ class Dashboard extends Component {
                     </Col>
                     <Col lg={4}>
                     <Card style={{ width: '18rem' }}>
-                        <Card.Header>Your top 3 pollution sources</Card.Header>
+                    <Accordion>
+  <Accordion.Item eventKey="0">
+    <Accordion.Header>Top polution sources</Accordion.Header>
+    <Accordion.Body>
+    
                         <ListGroup variant="flush">
                             <ListGroup.Item>Banana</ListGroup.Item>
                             <ListGroup.Item>Battery</ListGroup.Item>
                             <ListGroup.Item>Cans</ListGroup.Item>
                         </ListGroup>
+    </Accordion.Body>
+  </Accordion.Item>
+  <Accordion.Item eventKey="1">
+    <Accordion.Header>Achievements</Accordion.Header>
+    <Accordion.Body>
+                        <ListGroup variant="flush">
+                            <ListGroup.Item ><Row>
+                            <Col sm={4}><img src={week}  alt="1week"   /></Col>
+                            <Col sm={8}>1 week with 0 Carbon Footprint! </Col>
+                            </Row>
+                        </ListGroup.Item>
+                        <ListGroup.Item variant="secondary"><Row >
+                            <Col sm={4} ><Image src={month} alt="1month"   /></Col>
+                            <Col sm={8} >  1 month with 0 Carbon Footprint! </Col>
+                            </Row>
+                        </ListGroup.Item>
+                        <ListGroup.Item variant="secondary"><Row>
+                            <Col sm={4}><Image src={tmonths} alt="3months"  /></Col>
+                            <Col sm={8}>3 months with 0 Carbon Footprint! </Col>
+                            </Row>
+                        </ListGroup.Item>
+                        <ListGroup.Item variant="secondary" ><Row>
+                            <Col sm={4}><Image src={smonths} alt="6months"  /></Col>
+                            <Col sm={8}>6 months with 0 Carbon Footprint! </Col>
+                            </Row>
+                        </ListGroup.Item>
+                        <ListGroup.Item variant="secondary"><Row>
+                            <Col sm={4} ><Image src={year} alt="1year"  /></Col>
+                            <Col sm={8}>1 year with 0 Carbon Footprint! </Col>
+                            </Row>
+                        </ListGroup.Item>
+                        </ListGroup>
+    </Accordion.Body>
+  </Accordion.Item>
+</Accordion>
+                       
                     </Card>
                     </Col>
                 </Row>
