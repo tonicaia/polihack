@@ -1,8 +1,8 @@
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Card from "react-bootstrap/Card";
-import { Col, Row, Container, Button, CardGroup,Carousel } from 'react-bootstrap'
-import { useState,useEffect } from "react";
+import { Col, Row, Container, Button, CardGroup, Carousel, Modal, Form } from 'react-bootstrap'
+import { useState, useEffect } from "react";
 import { elements } from "./obj";
 import s1 from "../../assets/s1.png"
 import s2 from "../../assets/s2.png"
@@ -31,6 +31,10 @@ function Calculator(props) {
   const [quantity, setQuantity] = useState(0)
   const [worstItem, setWorstItem] = useState({})
   const [betterItem, setBetterItem] = useState({})
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const createEntity = async (e) => {
     e.preventDefault();
@@ -62,10 +66,68 @@ function Calculator(props) {
     userID = localStorage.getItem("userId");
   });
 
-  return(
+  return (
     <div>
       <br />
       <br />
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Pick up address</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <Form>
+  <Row className="mb-3">
+    <Form.Group as={Col} controlId="formGridEmail">
+      <Form.Label>Name</Form.Label>
+      <Form.Control type="text" placeholder="Name" />
+    </Form.Group>
+
+    <Form.Group as={Col} controlId="formGridPassword">
+      <Form.Label>Phone</Form.Label>
+      <Form.Control type="phone" placeholder="Phone" />
+    </Form.Group>
+  </Row>
+
+  <Form.Group className="mb-3" controlId="formGridAddress1">
+    <Form.Label>Address</Form.Label>
+    <Form.Control placeholder="1234 Main St" />
+  </Form.Group>
+
+  <Form.Group className="mb-3" controlId="formGridAddress2">
+    <Form.Label>Address 2</Form.Label>
+    <Form.Control placeholder="Apartment, studio, or floor" />
+  </Form.Group>
+
+  <Row className="mb-3">
+    <Form.Group as={Col} controlId="formGridCity">
+      <Form.Label>City</Form.Label>
+      <Form.Control />
+    </Form.Group>
+
+    <Form.Group as={Col} controlId="formGridState">
+      <Form.Label>County</Form.Label>
+      <Form.Select defaultValue="Choose...">
+        <option>Cluj</option>
+        <option>Bucuresti</option>
+      </Form.Select>
+    </Form.Group>
+
+    <Form.Group as={Col} controlId="formGridZip">
+      <Form.Label>Zip</Form.Label>
+      <Form.Control />
+    </Form.Group>
+  </Row>
+</Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Let's do this
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <Container className="justify-content-md-center">
         <Row>
           <Col lg={12}>
@@ -116,7 +178,8 @@ function Calculator(props) {
                   <br />
                   <span>
                     <Button variant="primary" onClick={createEntity}>Commit</Button>
-                    <Button variant="primary" disabled={item.category === "electronics" ? "true" : "false"} style={{ float: "right" }}>Let us pick it up</Button>
+                    {/* disabled={item.category === "electronics" ? "true" : "false"} */}
+                    <Button variant="primary" style={{ float: "right" }} onClick={handleShow}>Let us pick it up</Button>
                   </span>
                 </Card.Body>
               </Card>
@@ -134,49 +197,49 @@ function Calculator(props) {
           </Row>
         }
         <br />
-          <br />
+        <br />
         <Row>
-        <Carousel>
-  <Carousel.Item>
-    <img
-      className="d-block w-100"
-      src={s1}
-      alt="First slide"
-    />
-    <Carousel.Caption>
-    </Carousel.Caption>
-  </Carousel.Item>
-  <Carousel.Item>
-    <img
-      className="d-block w-100"
-      src={s2}
-      alt="Second slide"
-    />
+          <Carousel>
+            <Carousel.Item>
+              <img
+                className="d-block w-100"
+                src={s1}
+                alt="First slide"
+              />
+              <Carousel.Caption>
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+              <img
+                className="d-block w-100"
+                src={s2}
+                alt="Second slide"
+              />
 
-    <Carousel.Caption>
-    </Carousel.Caption>
-  </Carousel.Item>
-  <Carousel.Item>
-    <img
-      className="d-block w-100"
-      src={s3}
-      alt="Third slide"
-    />
+              <Carousel.Caption>
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+              <img
+                className="d-block w-100"
+                src={s3}
+                alt="Third slide"
+              />
 
-    <Carousel.Caption>
-         </Carousel.Caption>
-  </Carousel.Item>
-  <Carousel.Item>
-    <img
-      className="d-block w-100"
-      src={s4}
-      alt="Third slide"
-    />
+              <Carousel.Caption>
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+              <img
+                className="d-block w-100"
+                src={s4}
+                alt="Third slide"
+              />
 
-    <Carousel.Caption>
-    </Carousel.Caption>
-  </Carousel.Item>
-</Carousel>
+              <Carousel.Caption>
+              </Carousel.Caption>
+            </Carousel.Item>
+          </Carousel>
         </Row>
       </Container>
     </div>
