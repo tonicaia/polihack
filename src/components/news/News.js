@@ -31,7 +31,7 @@ class News extends React.Component {
         return (
             <div className="justify-content-md-center" style={{alignContent:"center"}}>
                 {   
-                    articles.map((article) =>
+                    articles && articles.map((article) =>
                     <Row style={{marginTop:"25px", maxWidth:"50%"}}>
                     <Card variant="outlined">
                     <Card.Header as="h5">{article.title}</Card.Header>

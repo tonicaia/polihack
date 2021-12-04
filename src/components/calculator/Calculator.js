@@ -75,49 +75,49 @@ function Calculator(props) {
           <Modal.Title>Pick up address</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <Form>
-  <Row className="mb-3">
-    <Form.Group as={Col} controlId="formGridEmail">
-      <Form.Label>Name</Form.Label>
-      <Form.Control type="text" placeholder="Name" />
-    </Form.Group>
+          <Form>
+            <Row className="mb-3">
+              <Form.Group as={Col} controlId="formGridEmail">
+                <Form.Label>Name</Form.Label>
+                <Form.Control type="text" placeholder="Name" />
+              </Form.Group>
 
-    <Form.Group as={Col} controlId="formGridPassword">
-      <Form.Label>Phone</Form.Label>
-      <Form.Control type="phone" placeholder="Phone" />
-    </Form.Group>
-  </Row>
+              <Form.Group as={Col} controlId="formGridPassword">
+                <Form.Label>Phone</Form.Label>
+                <Form.Control type="phone" placeholder="Phone" />
+              </Form.Group>
+            </Row>
 
-  <Form.Group className="mb-3" controlId="formGridAddress1">
-    <Form.Label>Address</Form.Label>
-    <Form.Control placeholder="1234 Main St" />
-  </Form.Group>
+            <Form.Group className="mb-3" controlId="formGridAddress1">
+              <Form.Label>Address</Form.Label>
+              <Form.Control placeholder="1234 Main St" />
+            </Form.Group>
 
-  <Form.Group className="mb-3" controlId="formGridAddress2">
-    <Form.Label>Address 2</Form.Label>
-    <Form.Control placeholder="Apartment, studio, or floor" />
-  </Form.Group>
+            <Form.Group className="mb-3" controlId="formGridAddress2">
+              <Form.Label>Address 2</Form.Label>
+              <Form.Control placeholder="Apartment, studio, or floor" />
+            </Form.Group>
 
-  <Row className="mb-3">
-    <Form.Group as={Col} controlId="formGridCity">
-      <Form.Label>City</Form.Label>
-      <Form.Control />
-    </Form.Group>
+            <Row className="mb-3">
+              <Form.Group as={Col} controlId="formGridCity">
+                <Form.Label>City</Form.Label>
+                <Form.Control />
+              </Form.Group>
 
-    <Form.Group as={Col} controlId="formGridState">
-      <Form.Label>County</Form.Label>
-      <Form.Select defaultValue="Choose...">
-        <option>Cluj</option>
-        <option>Bucuresti</option>
-      </Form.Select>
-    </Form.Group>
+              <Form.Group as={Col} controlId="formGridState">
+                <Form.Label>County</Form.Label>
+                <Form.Select defaultValue="Choose...">
+                  <option>Cluj</option>
+                  <option>Bucuresti</option>
+                </Form.Select>
+              </Form.Group>
 
-    <Form.Group as={Col} controlId="formGridZip">
-      <Form.Label>Zip</Form.Label>
-      <Form.Control />
-    </Form.Group>
-  </Row>
-</Form>
+              <Form.Group as={Col} controlId="formGridZip">
+                <Form.Label>Zip</Form.Label>
+                <Form.Control />
+              </Form.Group>
+            </Row>
+          </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
@@ -145,6 +145,7 @@ function Calculator(props) {
         {item && item.name &&
           <Row>
             <CardGroup>
+            {betterItem && betterItem.name && 
               <Card variant="outlined" style={{ background: "#90EE90", maxHeight: "200px" }}>
                 <Card.Header as="h5">{betterItem.name}</Card.Header>
                 <Card.Body>
@@ -154,6 +155,7 @@ function Calculator(props) {
                   </Card.Text>
                 </Card.Body>
               </Card>
+              }
 
               <Card style={{ marginLeft: "10px", marginRight: "10px" }}>
                 <Card.Header as="h5">{item.name}</Card.Header>
@@ -185,6 +187,7 @@ function Calculator(props) {
                 </Card.Body>
               </Card>
 
+              {worstItem && worstItem.name && 
               <Card variant="outlined" style={{ background: "#FF7F7F", maxHeight: "200px" }}>
                 <Card.Header as="h5">{worstItem.name}</Card.Header>
                 <Card.Body>
@@ -194,6 +197,7 @@ function Calculator(props) {
                   </Card.Text>
                 </Card.Body>
               </Card>
+              }
             </CardGroup>
           </Row>
         }
