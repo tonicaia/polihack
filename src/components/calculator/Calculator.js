@@ -28,8 +28,20 @@ function Home() {
       <Container className="justify-content-md-center">
         <Row>
           <Col lg={6}>
-            landing page
+            <Autocomplete
+              id="object-search-field"
+              freeSolo
+              options={elements.map((option) => option.name)}
+              onChange={(event, value) => selectItemFromSearch(value)}
+              renderInput={(params) => <TextField {...params} label="Search for an object" />}
+            />
           </Col>
+        </Row>
+
+        <Row>
+          <Card variant="outlined">
+            Selected Item: {item.name}
+          </Card>
         </Row>
       </Container>
     </div>

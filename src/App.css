@@ -1,0 +1,9 @@
+.navbar-nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-login {
+  padding-left: 50px;
+}
