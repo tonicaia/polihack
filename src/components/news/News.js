@@ -6,7 +6,7 @@ import { Row } from 'react-bootstrap';
 import bgimg from '../../assets/bg.jpg'
 import './News.scss'
 const API_KEY = "77942a49037a4103a810e5197200c66a"
-const URL = "https://newsapi.org/v2/everything?q=(environment OR polution OR sustenabilty)&sortBy=popularity&apiKey=" + API_KEY
+const URL = "https://newsapi.org/v2/everything?q=(pollution OR sustainability OR forest OR waste)&sortBy=popularity&apiKey=" + API_KEY
 let articles = []
 class News extends React.Component {
     constructor(props) {
