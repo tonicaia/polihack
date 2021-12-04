@@ -1,0 +1,24 @@
+$green-color: #0b4d39;
+$border-radius: 25px;
+$card-padding:10px;
+.wrapper{
+    justify-content: left;
+}
+
+.glass {
+    left:50%;
+    top:50%;
+    
+    box-shadow: 1px 1px 8px 1px #d2d6c4;
+    border-radius: $border-radius;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: $card-padding;
+    text-align: left;
+    width: 700px;
+    height:auto;
+    
+   
+}
+
