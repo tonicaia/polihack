@@ -5,7 +5,11 @@ import Dashboard from './Dashboard';
 import Home from './components/home/Home';
 import Login from './components/login/Login';
 import Price from './components/price/Price';
+<<<<<<< HEAD
 import Calculator from './components/calculator/Calculator';
+=======
+import Landing from './components/landing/Landing';
+>>>>>>> d6824e8dd373586736f9c9173d144a0dadc2a1ca
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Navbar,Container,Nav} from "react-bootstrap";
@@ -35,6 +39,7 @@ function App() {
     <Container>
     <Navbar.Brand href="#home">Navbar</Navbar.Brand>
     <Nav className="me-auto">
+<<<<<<< HEAD
       <div className="d-flex nav-main-sections">
         <Nav.Link href="/">Home</Nav.Link>
         <Nav.Link href="statistics">Statistics</Nav.Link>
@@ -43,15 +48,24 @@ function App() {
       <div className="nav-login">
         <Nav.Link href="login">Log in</Nav.Link>
       </div>
+=======
+      <Nav.Link href="home">Home</Nav.Link>
+      <Nav.Link href="statistics">Statistics</Nav.Link>
+      <Nav.Link href="pricing">Pricing</Nav.Link>
+>>>>>>> d6824e8dd373586736f9c9173d144a0dadc2a1ca
     </Nav>
     </Container>
   </Navbar>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/statistics" element={<Dashboard/>}/>
           <Route path="/login" element={<Login />} />
           <Route path="/pricing" element={<Price />} />
+<<<<<<< HEAD
           <Route path="/calculator" element={<Calculator />} />
+=======
+          <Route path="/" element={<Landing />} />
+>>>>>>> d6824e8dd373586736f9c9173d144a0dadc2a1ca
         </Routes>
       </header>
     </div>
