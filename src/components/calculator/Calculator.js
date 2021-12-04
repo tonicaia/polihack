@@ -171,6 +171,7 @@ function Calculator(props) {
                         shrink: true,
                       }}
                       variant="standard"
+                      value={quantity}
                       onChange={(e) => setQuantity(e.target.value)}
                     />
                   </Card.Text>

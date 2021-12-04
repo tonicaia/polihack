@@ -14,7 +14,6 @@ import { useCollectionData } from 'react-firebase-hooks/firestore';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
 
-
 firebase.initializeApp({
   apiKey: "AIzaSyCr7AIVDHhdi5fzKQqKt_kYz7-lWp5JvFk",
   authDomain: "wastecan-55bcc.firebaseapp.com",
@@ -25,10 +24,6 @@ firebase.initializeApp({
 })
 const firestore = firebase.firestore();
 const userID = localStorage.getItem("userId")
-
-
-const optionsPie = { labels: ["Food", "Electronics", "Clothes", "Plastics", "Others"] };
-const seriesPie = [4, 5, 6, 1, 5]; //our data
 
 const series = [
   {
@@ -48,17 +43,7 @@ const optionsProgress = {
 };
 
 function Example() {
-  const entitiesRef = firestore.collection('entities').where("userId", "==", userID);
-  const [entities] = useCollectionData(entitiesRef, { idField: 'id' });
-
   const [show, setShow] = useState(true);
-
-  useEffect(() => {
-
-    return () => {
-
-    };
-  });
 
   return (
     <Container>
@@ -84,92 +69,149 @@ function Example() {
   );
 }
 
+function Dashboard() {
+  const entitiesRef = firestore.collection('entities').where("userId", "==", userID);
+  const [entities] = useCollectionData(entitiesRef, { idField: 'id' });
 
-class Dashboard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      user: "",
-    }
+  let entitiesGroupedByCategory = [];
+  let entitiesGroupedByElements = [];
+
+  const prepareData = () => {
+    let categoryOptions = { labels: [] }
+    let categorySeries = []
+
+    let elementOptions = { labels: [] }
+    let elementSeries = []
+
+    entities && entities.forEach(entity => {
+      let foundCategory = entitiesGroupedByCategory.find(element => element.category === entity.category)
+      let foundElement = entitiesGroupedByElements.find(element => element.name === entity.name)
+
+      if (foundCategory) {
+        let originalNumber = parseFloat(entitiesGroupedByCategory[entitiesGroupedByCategory.indexOf(foundCategory)].totalFootprint)
+        let newNumber = parseFloat(entity.footprint)
+        entitiesGroupedByCategory[entitiesGroupedByCategory.indexOf(foundCategory)].totalFootprint = (originalNumber + newNumber).toString()
+        // parseFloat(entitiesGroupedByCategory[entitiesGroupedByCategory.indexOf(foundCategory)].totalFootprint) += parseFloat(entity.footprint)
+      } else {
+        let newCategoryEntity = {
+          category: entity.category,
+          totalFootprint: entity.footprint
+        }
+        entitiesGroupedByCategory = [...entitiesGroupedByCategory, newCategoryEntity]
+      }
+
+      if (foundElement) {
+        let originalNumber = parseFloat(entitiesGroupedByElements[entitiesGroupedByElements.indexOf(foundElement)].totalFootprint)
+        let newNumber = parseFloat(entity.footprint)
+        entitiesGroupedByElements[entitiesGroupedByElements.indexOf(foundElement)].totalFootprint = (originalNumber + newNumber).toString()
+        // entitiesGroupedByElements[entity.name].totalFootprint += entity.footprint
+      } else {
+        let newSingleEntity = {
+          name: entity.name,
+          totalFootprint: entity.footprint
+        }
+        entitiesGroupedByElements = [...entitiesGroupedByElements, newSingleEntity]
+      }
+    })
+
+
+    entitiesGroupedByCategory.forEach(element => {
+      categoryOptions.labels = [...categoryOptions.labels, element.category]
+      categorySeries = [...categorySeries, parseFloat(element.totalFootprint)]
+    })
+
+    entitiesGroupedByElements.forEach(element => {
+      elementOptions.labels = [...elementOptions.labels, element.name]
+      elementSeries = [...elementSeries, parseFloat(element.totalFootprint)]
+    })
+    console.log(entitiesGroupedByElements);
+
+    return [categoryOptions, categorySeries, elementOptions, elementSeries]
   }
-  render() {
-    return (
-      <div>
+
+  const [categoryOptionsPie, categorySeriesPie, elementOptionsPie, elementSeriesPie] = prepareData()
+
+  return (
+    <div>
+      <br />
+      <h1>Your stats:</h1>
+      <div style={{ height: "50px" }}></div>
+      <Example />
+      <Container fluid>
+        <Row>
+          <Col lg={8}>
+            <Chart type="line" series={series} options={options} height="300" width="100%" />
+          </Col>
+          <Col lg={4}>
+            <Card style={{ width: '18rem' }}>
+              {entitiesGroupedByElements && <Accordion>
+                <Accordion.Item eventKey="0">
+                  <Accordion.Header>Top polution sources</Accordion.Header>
+                  <Accordion.Body>
+                    <ListGroup variant="flush">
+                      {entitiesGroupedByElements.map((item, key) => {
+                        return <ListGroup.Item>{item.name} | {item.totalFootprint} kg CO2</ListGroup.Item>
+                      })}
+                      {/* <ListGroup.Item>Battery</ListGroup.Item>
+                      <ListGroup.Item>Cans</ListGroup.Item> */}
+                    </ListGroup>
+                  </Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item eventKey="1">
+                  <Accordion.Header>Achievements</Accordion.Header>
+                  <Accordion.Body>
+                    <ListGroup variant="flush">
+                      <ListGroup.Item ><Row>
+                        <Col sm={4}><img className="img-badge" src={week} alt="1week" /></Col>
+                        <Col sm={8}>1 week with 0 Carbon Footprint! </Col>
+                      </Row>
+                      </ListGroup.Item>
+                      <ListGroup.Item variant="secondary"><Row >
+                        <Col sm={4} ><Image className="img-badge" src={month} alt="1month" /></Col>
+                        <Col sm={8} >  1 month with 0 Carbon Footprint! </Col>
+                      </Row>
+                      </ListGroup.Item>
+                      <ListGroup.Item variant="secondary"><Row>
+                        <Col sm={4}><Image className="img-badge" src={tmonths} alt="3months" /></Col>
+                        <Col sm={8}>3 months with 0 Carbon Footprint! </Col>
+                      </Row>
+                      </ListGroup.Item>
+                      <ListGroup.Item variant="secondary" ><Row>
+                        <Col sm={4}><Image className="img-badge" src={smonths} alt="6months" /></Col>
+                        <Col sm={8}>6 months with 0 Carbon Footprint! </Col>
+                      </Row>
+                      </ListGroup.Item>
+                      <ListGroup.Item variant="secondary"><Row>
+                        <Col sm={4} ><Image className="img-badge" src={year} alt="1year" /></Col>
+                        <Col sm={8}>1 year with 0 Carbon Footprint! </Col>
+                      </Row>
+                      </ListGroup.Item>
+                    </ListGroup>
+                  </Accordion.Body>
+                </Accordion.Item>
+              </Accordion> }
+
+            </Card>
+          </Col>
+        </Row>
         <br />
-        <h1>Your stats:</h1>
-        <div style={{ height: "50px" }}></div>
-        <Example />
-        <Container fluid>
-          <Row>
-            <Col lg={8}>
-              <Chart type="line" series={series} options={options} height="300" width="100%" />
-            </Col>
-            <Col lg={4}>
-              <Card style={{ width: '18rem' }}>
-                <Accordion>
-                  <Accordion.Item eventKey="0">
-                    <Accordion.Header>Top polution sources</Accordion.Header>
-                    <Accordion.Body>
+        <Row>
 
-                      <ListGroup variant="flush">
-                        <ListGroup.Item>Banana</ListGroup.Item>
-                        <ListGroup.Item>Battery</ListGroup.Item>
-                        <ListGroup.Item>Cans</ListGroup.Item>
-                      </ListGroup>
-                    </Accordion.Body>
-                  </Accordion.Item>
-                  <Accordion.Item eventKey="1">
-                    <Accordion.Header>Achievements</Accordion.Header>
-                    <Accordion.Body>
-                      <ListGroup variant="flush">
-                        <ListGroup.Item ><Row>
-                          <Col sm={4}><img className="img-badge" src={week} alt="1week" /></Col>
-                          <Col sm={8}>1 week with 0 Carbon Footprint! </Col>
-                        </Row>
-                        </ListGroup.Item>
-                        <ListGroup.Item variant="secondary"><Row >
-                          <Col sm={4} ><Image className="img-badge" src={month} alt="1month" /></Col>
-                          <Col sm={8} >  1 month with 0 Carbon Footprint! </Col>
-                        </Row>
-                        </ListGroup.Item>
-                        <ListGroup.Item variant="secondary"><Row>
-                          <Col sm={4}><Image className="img-badge" src={tmonths} alt="3months" /></Col>
-                          <Col sm={8}>3 months with 0 Carbon Footprint! </Col>
-                        </Row>
-                        </ListGroup.Item>
-                        <ListGroup.Item variant="secondary" ><Row>
-                          <Col sm={4}><Image className="img-badge" src={smonths} alt="6months" /></Col>
-                          <Col sm={8}>6 months with 0 Carbon Footprint! </Col>
-                        </Row>
-                        </ListGroup.Item>
-                        <ListGroup.Item variant="secondary"><Row>
-                          <Col sm={4} ><Image className="img-badge" src={year} alt="1year" /></Col>
-                          <Col sm={8}>1 year with 0 Carbon Footprint! </Col>
-                        </Row>
-                        </ListGroup.Item>
-                      </ListGroup>
-                    </Accordion.Body>
-                  </Accordion.Item>
-                </Accordion>
+          <Col lg={6}>
+            <Chart type="radialBar" series={seriesProgress} options={optionsProgress} width="400" />
+          </Col>
 
-              </Card>
-            </Col>
-          </Row>
-          <br />
-          <Row>
+          {/* <Col lg={6}>
+            {entities && <Chart options={elementOptionsPie} series={elementSeriesPie} type="pie" width="400" />}
+          </Col> */}
 
-            <Col lg={6}>
-              <Chart type="radialBar" series={seriesProgress} options={optionsProgress} width="400" />
-            </Col>
-
-            <Col lg={6}>
-              <Chart options={optionsPie} series={seriesPie} type="pie" width="400" />
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    );
-  }
+          <Col lg={6}>
+            {entities && <Chart options={categoryOptionsPie} series={categorySeriesPie} type="pie" width="400" />}
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
 }
 
 export default Dashboard
