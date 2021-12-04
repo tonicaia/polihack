@@ -1,26 +1,16 @@
-import { Link } from "react-router-dom";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Card from "react-bootstrap/Card";
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-<<<<<<< HEAD
 import { Col, Row, Container, Button, CardGroup,Carousel } from 'react-bootstrap'
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { elements } from "./obj";
 import s1 from "../../assets/s1.png"
 import s2 from "../../assets/s2.png"
 import s3 from "../../assets/s3.png"
 import s4 from "../../assets/s4.png"
-=======
-import { Col, Row, Container, Button, CardGroup } from 'react-bootstrap'
-import { elements } from "./obj";
-import { useState, useEffect } from "react";
-
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
->>>>>>> 7bf8b87d334b838b67a71ccece2ee4164b2c10b2
 
 
 firebase.initializeApp({
@@ -41,8 +31,6 @@ function Calculator(props) {
   const [quantity, setQuantity] = useState(0)
   const [worstItem, setWorstItem] = useState({})
   const [betterItem, setBetterItem] = useState({})
-<<<<<<< HEAD
-=======
 
   const createEntity = async (e) => {
     e.preventDefault();
@@ -59,7 +47,6 @@ function Calculator(props) {
     setQuantity(0);
   }
 
->>>>>>> 7bf8b87d334b838b67a71ccece2ee4164b2c10b2
   const selectItemFromSearch = item => {
     const currentItem = list.find(list => list.name === item)
     setItem(currentItem)
