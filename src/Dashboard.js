@@ -34,12 +34,13 @@ const series = [
 const options = {
   xaxis: {
     categories: ["2021-11-01", "2021-11-02", "2021-11-03", "2021-11-04", "2021-11-05", "2021-11-06", "2021-11-07", "2021-11-08","2021-11-09", "2021-11-10", "2021-11-11", "2021-11-12", "2021-11-13", "2021-11-14", "2021-11-15", "2021-11-16","2021-11-17", "2021-11-18", "2021-11-19", "2021-11-20", "2021-11-21", "2021-11-22", "2021-11-23", "2021-11-24","2021-11-25", "2021-11-26", "2021-11-27", "2021-11-28", "2021-11-29", "2021-11-30"]
-  }
+  },
+  stroke: {curve: "smooth"},
+  colors: ["#bada55"]
 };
 
-const seriesProgress = [70]; //70 percent
 const optionsProgress = {
-  labels: ["Until 0 CO2"], //label of this diagram
+  labels: ["Negative impact", "Positive impact"], //label of this diagram
 };
 
 function Example() {
@@ -95,6 +96,9 @@ function Dashboard() {
     let elementOptions = { labels: [] }
     let elementSeries = []
 
+    let positiveSeries = 0;
+    let negativeSeries = 0;
+
     entities && entities.forEach(entity => {
       let foundCategory = entitiesGroupedByCategory.find(element => element.category === entity.category)
       let foundElement = entitiesGroupedByElements.find(element => element.name === entity.name)
@@ -128,20 +132,27 @@ function Dashboard() {
 
 
     entitiesGroupedByCategory.forEach(element => {
-      categoryOptions.labels = [...categoryOptions.labels, element.category]
-      categorySeries = [...categorySeries, parseFloat(element.totalFootprint)]
+      if (element.totalFootprint > 0) {
+        categoryOptions.labels = [...categoryOptions.labels, element.category]
+        categorySeries = [...categorySeries, parseFloat(element.totalFootprint)]
+      }
     })
 
     entitiesGroupedByElements.forEach(element => {
-      elementOptions.labels = [...elementOptions.labels, element.name]
-      elementSeries = [...elementSeries, parseFloat(element.totalFootprint)]
-    })
-    console.log(entitiesGroupedByElements);
+      if (element.totalFootprint > 0) {
+        elementOptions.labels = [...elementOptions.labels, element.name]
+        elementSeries = [...elementSeries, parseFloat(element.totalFootprint)]
 
-    return [categoryOptions, categorySeries, elementOptions, elementSeries]
+        positiveSeries += parseFloat(element.totalFootprint)
+      } else negativeSeries += parseFloat(element.totalFootprint)
+    })
+
+    console.log(positiveSeries);
+    console.log(negativeSeries);
+    return [categoryOptions, categorySeries, elementOptions, elementSeries, [positiveSeries, -negativeSeries]]
   }
 
-  const [categoryOptionsPie, categorySeriesPie, elementOptionsPie, elementSeriesPie] = prepareData()
+  const [categoryOptionsPie, categorySeriesPie, elementOptionsPie, elementSeriesPie, seriesDonut] = prepareData()
 
   return (
     <div>
@@ -161,7 +172,7 @@ function Dashboard() {
                   <Accordion.Header>Top polution sources</Accordion.Header>
                   <Accordion.Body>
                     <ListGroup variant="flush">
-                      {entitiesGroupedByElements.map((item, key) => {
+                      {entitiesGroupedByElements.filter(item => item.totalFootprint > 0).map((item, key) => {
                         return <ListGroup.Item>{item.name} | {item.totalFootprint} kg CO2</ListGroup.Item>
                       })}
                       {/* <ListGroup.Item>Battery</ListGroup.Item>
@@ -210,7 +221,7 @@ function Dashboard() {
         <Row>
 
           <Col lg={6}>
-            <Chart type="radialBar" series={seriesProgress} options={optionsProgress} width="400" />
+            <Chart type="donut" series={seriesDonut} options={optionsProgress} width="400" />
           </Col>
 
           {/* <Col lg={6}>
@@ -218,6 +229,7 @@ function Dashboard() {
           </Col> */}
 
           <Col lg={6}>
+            <h3>Waste by percentage:</h3>
             {entities && <Chart options={categoryOptionsPie} series={categorySeriesPie} type="pie" width="400" />}
           </Col>
         </Row>
