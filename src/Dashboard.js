@@ -62,6 +62,18 @@ function Example() {
               </Toast.Header>
               <Toast.Body>Good job your CO2 footprint is 0.</Toast.Body>
             </Toast>
+            <Toast onClose={() => setShow(false)} show={show} delay={8000} autohide>
+              <Toast.Header>
+                <img
+                  src="holder.js/20x20?text=%20"
+                  className="rounded me-2"
+                  alt=""
+                />
+                <strong className="me-auto">We miss you!</strong>
+                <small>15 mins ago</small>
+              </Toast.Header>
+              <Toast.Body>Your recent activity was poor.</Toast.Body>
+            </Toast>
           </ToastContainer>
         </Col>
       </Row>
