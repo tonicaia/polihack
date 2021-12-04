@@ -1,182 +1,182 @@
 export const elements = [
     {
         "id": 1,
-        "name": "banana",
+        "name": "Throw away a banana",
         "quantity": "1",
         "footprint": "0.48",
         "category": "food"
     },
     {
         "id": 2,
-        "name": "egg",
+        "name": "Throw away an egg",
         "quantity": "1",
         "footprint": "2.9",
         "category": "food"
     },
     {
         "id": 3,
-        "name": "nuts",
+        "name": "Throw away nuts",
         "quantity": "1",
         "footprint": "2.3",
         "category": "food"
     },
     {
         "id": 4,
-        "name": "lamb",
+        "name": "Throw away lamb",
         "quantity": "1",
         "footprint": "39.2",
         "category": "food"
     },
     {
         "id": 5,
-        "name": "beef",
+        "name": "Throw away beef",
         "quantity": "1",
         "footprint": "27",
         "category": "food"
     },
     {
         "id": 6,
-        "name": "cheese",
+        "name": "Throw away cheese",
         "quantity": "1",
         "footprint": "13.5",
         "category": "food"
     },
     {
         "id": 7,
-        "name": "pork",
+        "name": "Throw away pork",
         "quantity": "1",
         "footprint": "12.1",
         "category": "food"
     },
     {
         "id": 8,
-        "name": "turkey",
+        "name": "Throw away turkey",
         "quantity": "1",
         "footprint": "10.9",
         "category": "food"
     },
     {
         "id": 9,
-        "name": "chicken",
+        "name": "Throw away chicken",
         "quantity": "1",
         "footprint": "6.9",
         "category": "food"
     },
     {
         "id": 10,
-        "name": "rice",
+        "name": "Throw away rice",
         "quantity": "1",
         "footprint": "2.7",
         "category": "food"
     },
     {
         "id": 11,
-        "name": "tuna",
+        "name": "Throw away tuna",
         "quantity": "1",
         "footprint": "6.1",
         "category": "food"
     },
     {
         "id": 12,
-        "name": "tomatoes",
+        "name": "Throw away tomatoes",
         "quantity": "1",
         "footprint": "2.27",
         "category": "food"
     },
     {
         "id": 13,
-        "name": "bread",
+        "name": "Throw away bread",
         "quantity": "1",
         "footprint": "1.24",
         "category": "food"
     },
     {
         "id": 14,
-        "name": "potato",
+        "name": "Throw away potato",
         "quantity": "1",
         "footprint": "4.8",
         "category": "food"
     },
     {
         "id": 15,
-        "name": "orange",
+        "name": "Throw away an orange",
         "quantity": "1",
         "footprint": "0.33",
         "category": "food"
     },
     {
         "id": 16,
-        "name": "paper",
+        "name": "Throw away paper",
         "quantity": "1",
         "footprint": "0.005",
         "category": "papers"
     },
     {
         "id": 17,
-        "name": "paper toilet rolls",
+        "name": "Throw away paper toilet rolls",
         "quantity": "1",
         "footprint": "0.6",
         "category": "papers"
     },
     {
         "id": 18,
-        "name": "parfume bottle",
+        "name": "Throw away parfume bottle",
         "quantity": "1",
         "footprint": "0.05",
         "category": "bottles"
     },
     {
         "id": 19,
-        "name": "shampoo bottle",
+        "name": "Throw away shampoo bottle",
         "quantity": "1",
         "footprint": "0.8",
         "category": "bottles"
     },
     {
         "id": 20,
-        "name": "water bottle",
+        "name": "Throw away water bottle",
         "quantity": "1",
         "footprint": "0.05",
         "category": "bottles"
     },
     {
         "id": 21,
-        "name": "makeup samples",
+        "name": "Throw away makeup samples",
         "quantity": "1",
         "footprint": "1.24",
         "category": "others"
     },
     {
         "id": 22,
-        "name": "milk jugs",
+        "name": "Throw away milk jugs",
         "quantity": "1",
         "footprint": "7.98",
         "category": "others"
     },
     {
         "id": 23,
-        "name": "cigar end",
+        "name": "Throw away a cigar",
         "quantity": "1",
         "footprint": "3.5",
         "category": "others"
     },
     {
         "id": 24,
-        "name": "mask",
+        "name": "Throw away a mask",
         "quantity": "1",
         "footprint": "0.0324",
         "category": "others"
     },
     {
         "id": 25,
-        "name": "lightbulb",
+        "name": "Throw away a lightbulb",
         "quantity": "1",
         "footprint": "15",
         "category": "electronics"
     },
     {
         "id": 26,
-        "name": "smoking a cigarette",
+        "name": "Smoking a cigarette",
         "quantity": "1",
         "footprint": "10.16047",
         "category": "actions"
@@ -190,28 +190,28 @@ export const elements = [
     },
     {
         "id": 28,
-        "name": "Riding a bike",
+        "name": "Ride a bike",
         "quantity": "1",
         "footprint": "-0.021",
         "category": "actions"
     },
     {
         "id": 29,
-        "name": "walking",
+        "name": "Walking",
         "quantity": "1",
         "footprint": "-0.15",
         "category": "actions"
     },
     {
         "id": 30,
-        "name": "reuse a bag",
+        "name": "Reuse a bag",
         "quantity": "1",
         "footprint": "-0.3",
         "category": "actions"
     },
     {
         "id": 31,
-        "name": "",
+        "name": "Cook without oil",
         "quantity": "1",
         "footprint": "-0.09768",
         "category": "actions"
@@ -267,14 +267,14 @@ export const elements = [
     },
     {
         "id": 39,
-        "name": "plastic straw",
+        "name": "Use a plastic straw",
         "quantity": "1",
         "footprint": "0.00146",
         "category": "plastics"
     },
     {
         "id": 40,
-        "name": "soda can",
+        "name": "Throw away a soda can",
         "quantity": "1",
         "footprint": "5",
         "category": "others"

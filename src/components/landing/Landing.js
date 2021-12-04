@@ -15,6 +15,9 @@ class Landing extends Component {
     return (
       <div id="parallax-world-of-ugg">
         <section>
+        <div class="title">
+            <h3>Let's make a difference</h3>
+          </div>
     <div class="parallax-one">
       <h2>
       <img src={logo}></img>

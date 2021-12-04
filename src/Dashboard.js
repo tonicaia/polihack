@@ -157,7 +157,7 @@ function Dashboard() {
   return (
     <div>
       <br />
-      <h1>Your stats:</h1>
+      <h1>Personal statistics:</h1>
       <div style={{ height: "50px" }}></div>
       <Example />
       <Container fluid>
@@ -221,6 +221,7 @@ function Dashboard() {
         <Row>
 
           <Col lg={6}>
+          <h4>Positive/negative impact:</h4>
             <Chart type="donut" series={seriesDonut} options={optionsProgress} width="400" />
           </Col>
 
@@ -229,7 +230,7 @@ function Dashboard() {
           </Col> */}
 
           <Col lg={6}>
-            <h3>Waste by percentage:</h3>
+            <h4>Waste by category:</h4>
             {entities && <Chart options={categoryOptionsPie} series={categorySeriesPie} type="pie" width="400" />}
           </Col>
         </Row>
