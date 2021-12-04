@@ -5,11 +5,8 @@ import Dashboard from './Dashboard';
 import Home from './components/home/Home';
 import Login from './components/login/Login';
 import Price from './components/price/Price';
-<<<<<<< HEAD
 import Calculator from './components/calculator/Calculator';
-=======
 import Landing from './components/landing/Landing';
->>>>>>> d6824e8dd373586736f9c9173d144a0dadc2a1ca
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Navbar,Container,Nav} from "react-bootstrap";
