@@ -166,8 +166,8 @@ function Dashboard() {
             <Chart type="line" series={series} options={options} height="300" width="100%" />
           </Col>
           <Col lg={4}>
-            <Card style={{ width: '18rem' }}>
-              {entitiesGroupedByElements && <Accordion>
+            <Card style={{ width: '18rem' , float: "right"}}>
+              {entitiesGroupedByElements && <Accordion defaultActiveKey="0">
                 <Accordion.Item eventKey="0">
                   <Accordion.Header>Top polution sources</Accordion.Header>
                   <Accordion.Body>

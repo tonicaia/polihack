@@ -147,11 +147,14 @@ function Calculator(props) {
             <CardGroup>
             {betterItem && betterItem.name && 
               <Card variant="outlined" style={{ background: "#90EE90", maxHeight: "200px" }}>
-                <Card.Header as="h5">{betterItem.name}</Card.Header>
+                <Card.Header as="h5">Something you can do better</Card.Header>
                 <Card.Body>
-                  <Card.Title>Carbon Footprint: {betterItem.footprint} kgCO2</Card.Title>
+                  <Card.Title>{betterItem.name}</Card.Title>
                   <Card.Text>
-                    Category: {betterItem.category}
+                  Carbon Footprint: {betterItem.footprint} kgCO2
+                  </Card.Text>
+                  <Card.Text>
+                  Category: {betterItem.category}
                   </Card.Text>
                 </Card.Body>
               </Card>
@@ -188,12 +191,15 @@ function Calculator(props) {
               </Card>
 
               {worstItem && worstItem.name && 
-              <Card variant="outlined" style={{ background: "#FF7F7F", maxHeight: "200px" }}>
-                <Card.Header as="h5">{worstItem.name}</Card.Header>
+              <Card variant="outlined" style={{ background: "#FF2800", maxHeight: "200px" }}>
+                <Card.Header as="h5">Something you can do worse</Card.Header>
                 <Card.Body>
-                  <Card.Title>Carbon Footprint: {worstItem.footprint} kgCO2</Card.Title>
+                <Card.Title>{worstItem.name}</Card.Title>
                   <Card.Text>
-                    Category: {worstItem.category}
+                  Carbon Footprint: {worstItem.footprint} kgCO2
+                  </Card.Text>
+                  <Card.Text>
+                  Category: {worstItem.category}
                   </Card.Text>
                 </Card.Body>
               </Card>

@@ -64,7 +64,7 @@ function App() {
         {user && !loading && <Nav.Link href="calculator">Calculator</Nav.Link>}
         {user && !loading && <Nav.Link href="statistics">Statistics</Nav.Link>}
         <Nav.Link href="pricing">Pricing</Nav.Link>
-        <Nav.Link href="news">Be aware !</Nav.Link>
+        {user && !loading && <Nav.Link href="news">Be aware !</Nav.Link>}
         <Nav.Link href="rankings">Rankings</Nav.Link>
       </div>
       <div className="nav-login">
