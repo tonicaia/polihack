@@ -38,6 +38,7 @@ function App() {
     <Nav className="me-auto">
       <div className="d-flex nav-main-sections">
         <Nav.Link href="/">Home</Nav.Link>
+        <Nav.Link href="calculator">Calculator</Nav.Link>
         <Nav.Link href="statistics">Statistics</Nav.Link>
         <Nav.Link href="pricing">Pricing</Nav.Link>
       </div>

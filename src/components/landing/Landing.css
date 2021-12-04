@@ -58,3 +58,43 @@
 @media screen and (max-width: 479px) {
   #parallax-world-of-ugg .block {padding: 30px 15px; width:290px;}
 }
+
+
+.donate-link {
+  width: 20em;
+  margin: auto;
+}
+
+.donate-image {
+  margin: auto;
+  width: 100%;
+}
+
+.btn-paypal {
+  background: transparent;
+  border: 2px solid #8224E3;
+  border-radius: 3px;
+  color: #8224E3;
+  font-weight: bold;
+  padding: 0.3m 0em;
+  margin: auto;
+  display: block;
+  width: 60%;
+  text-decoration: none;
+  font-size:1.3em;
+  text-align: center;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.btn-paypal:hover {
+  background-color: #8224E3;
+  color: white;
+  text-decoration: none;
+}
+
+.btn-paypal > span {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0.8em 0;
+}

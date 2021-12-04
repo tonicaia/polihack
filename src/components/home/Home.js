@@ -8,11 +8,11 @@ import { Col, Row, Container } from 'react-bootstrap'
 import { useState } from "react";
 
 const elements = [
-  {name: "banana"},
-  {name: "apple"},
-  {name: "glasses"},
-  {name: "watermelon"},
-  {name: "waffles"}
+  { name: "banana" },
+  { name: "apple" },
+  { name: "glasses" },
+  { name: "watermelon" },
+  { name: "waffles" }
 ]
 
 function Home() {
@@ -23,7 +23,7 @@ function Home() {
     setItem(currentItem)
   }
 
-  return(
+  return (
     <div>
       <Container className="justify-content-md-center">
         <Row>
