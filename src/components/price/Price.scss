@@ -1,91 +1,145 @@
 // imported styleguide resource
-
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 // -----------------------
-
-$card-padding: 25px;
-$border-radius: 3px;
+$green-color: #0b4d39;
+$card-padding: 15px;
+$border-radius: 25px;
 $featured-color: #87ceeb;
 
-h1 { text-align: center; }
+h1 {
+  text-align: left;
+}
 
 .container-price {
-	display: flex;
-	margin: 20px auto;
+  display: flex;
+  margin: 20px auto;
+  justify-content: space-around;
 }
 
 .pricingCard {
-	border: 1px solid #778899;
-	border-radius: $border-radius;
-	flex: 1;
-	margin: 10px;
-	display: flex;
-	flex-direction: column;
-	padding-bottom: $card-padding;
-	text-align: center;
+  box-shadow: 1px 1px 8px 1px #d2d6c4;
+  border-radius: $border-radius;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: $card-padding;
+  text-align: center;
+  width: 300px;
+  height: 500px;
+  
+  &:hover{
+
+		border:2px solid #0d5e45;
+  }
+
 }
 
-.pricingCard h2 { margin-bottom: 0; }
+.pricingCard h2 {
+  text-align: left;
+  margin-bottom: 0;
+}
+.description{
+	text-align: left;
+}
+.pricingCard .price-desc {
+  text-align: left;
+  margin-left: 15px;
+}
+.pricingCard li{
+list-style-type: disc;
+}
 
+.pricingCard ol li::before{
+	color:$green-color;
+}
 .title {
-	background: #696969;
-	padding: 20px $card-padding;
-	border-top-left-radius: $border-radius;
-	border-top-right-radius: $border-radius;
-	font-size: 1.7em;
+  text-align: left;
+  color: #0b4d39;
+  padding: 20px $card-padding;
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+  font-size: 1.7em;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
 }
 
 .pricingCard.featured {
-//	color: $featured-color;
-	border-color: $featured-color;
-	background: #696969;
+  //	color: $featured-color;
+ 
 }
 
-.pricingCard.featured .title { 
-	background: $featured-color;
-	color: white;
+.pricingCard.featured .title {
+  //background: $featured-color;
+  //color: white;
 }
-
+.price {
+  font-family: "Montserrat", sans-serif;
+}
 .pricingCard.featured .bttn {
-	background: $featured-color;
-	color: white;
-	&:hover { background: lightblue; }
+  background-color: #fff;
+  font-family: "Montserrat", sans-serif;
+  color: #0b4d39;
+  border: 2px solid #0b4d39;
+  transition: 0.4s;
+  &:hover {
+	  color: white;
+	background-color: #0b4d39;
+  }
 }
 
 .pricingCard .price-overview {
-	margin-top: 20px;
-	font-weight: bold;
+  margin-top: 20px;
+  font-weight: bold;
+  text-align: left;
+  margin-left:18px;
 }
 
-.pricingCard.featured .btn { 
-	background: blue;
-}
 
-.price .price__currency { font-size: 1.7em; padding-right: 3px; }
-.price .price__dollar { font-size: 1.7em; }
-.price .price__cent { font-size: 1em; }
+
+.price .price__currency {
+  font-size: 1.7em;
+  font-weight: 500;
+  padding-right: 3px;
+}
+.price .price__dollar {
+  font-size: 1.7em;
+  font-weight: 400;
+}
+.price .price__cent {
+  font-size: 1em;
+  font-weight: 300;
+}
 
 .card-price {
-	padding: 10px $card-padding 20px;
+  padding: 10px $card-padding 20px;
 }
 
-.price-desc { 
-	font-size: 0.7em;
-	margin-top: 0;
+.price-desc {
+  font-size: 0.7em;
+  margin-top: 0;
+  text-align:left;
 }
 
-.bttn { 
-	// inherits other styles from template
-	display: block; 
-	text-align: center;
-	
-	position: relative;
-	margin: 0 $card-padding;
-	margin-top: auto;
-	
-	background: none;
-	border: 1px solid $featured-color;
-	color: $featured-color;
-	
-	&:hover { background: grey; }
+.bttn {
+  display: flex;
+  // inherits other styles from template
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: 0 $card-padding;
+  margin-top: auto;
+  background-color: $green-color;
+  border-radius: 5px;
+	border-color:#0b4d39;
+  color: $featured-color;
+  height: 50px;
+  text-decoration: none;
+  font-family: "Montserrat",sans-serif;
+  font-weight: 600;
+  color:white;
+   transition: 0.3s;
+  &:hover {
+	color:white;
+    background: rgba(11, 77, 57, 0.90);
+  }
 }

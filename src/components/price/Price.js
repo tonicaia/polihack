@@ -7,49 +7,62 @@ import "./Price.scss"
 const pricingDataAll = {
 
     generic: {
-      priceDesc: "some small print",
-      ctaText: "Try Now for 30 Days",
+      general:{
+      priceDesc: "every month",
+      ctaText: "Get Started",
       ctaLinkPrefix : "http://www.google.com/",
       ctaSecondaryText: "purchase now",
       ctaSecondaryLinkPrefix: "http://www.bing.com/",
       description: "This is the most basic package but it's also the cheapest. Great for ordinary use."
+      },
+      three: {
+        priceDesc: "three months of our services for 50% off!",
+        ctaText: "Select",
+        ctaLinkPrefix : "http://www.google.com/",
+        ctaSecondaryText: "purchase now",
+        ctaSecondaryLinkPrefix: "http://www.bing.com/",
+        description: "This is the most basic package but it's also the cheapest. Great for ordinary use."
+      },
     },
 
     common: {
       one: {
-        description: "This is the most basic package but it's also the cheapest. Great for ordinary use."
+        description: <ol><li>Visualization of CO2 emissions for consumed items</li></ol>
       },
       two: {
-        description: "Best selling option. This is well suited for all around general everything."
+        description: <ol><li>Including free plan benefits</li><li>Viewing personal statistics on CO2 emissions</li><li>Monitoring progress
+        </li><li>Pick-up waste from home if requested</li></ol>
       },
       three: {
-        description: "Enterprise edition. Heavy duty awesomeness that'll handle just about anything you can throw at it, including the kitchen sink."
+        
+        description: <ol><li>Including all the benefits from free and personal plan</li><li>Collective statistics of the company</li><li>Priority waste collection regardless of size</li></ol>
       }
     },
 
     regular: {
 
       generic: {
-        priceOverview: "Standard Version"
+        priceOverview: "Perfect for beginners"
+        
       },
 
       one: {
-        title: "Basic",
-        price: 0.99,
+        title: "FREE",
+        price: 0,
         billingCode: "basic-regular",
-        priceOverview: "Standard Version",
+        priceOverview: "Perfect for begginers",
       },
       two: {
-        title: "Advanced",
-        price: 1.99,
+        title: "PERSONAL",
+        price: 1,
         billingCode: "advanced-regular",
-        priceOverview: "Standard Version",
+        priceOverview: "For serious enthusiasts",
       },
       three: {
-        title: "Enterprise",
-        price: 2.99,
+        title: "BUSINESS",
+        price: 25 ,
         billingCode: "enterprise-regular",
-        priceOverview: "Standard Version",
+        priceOverview: "Perfect for your business",
       }
     },
 
@@ -133,22 +146,24 @@ render() {
           <PricingCard
           pricingData={one}
           common={common.one}
-          generic={generic}
+          generic={generic.general}
+          featured
           >
+          
           </PricingCard>
 
           <PricingCard
           pricingData={two}
           common={common.two}
-          generic={generic}
-          featured
+          generic={generic.general}
+          
           >
           </PricingCard>
 
           <PricingCard
           pricingData={three}
           common={common.three}
-          generic={generic}
+          generic={generic.three}
           >
           </PricingCard>
 
@@ -178,19 +193,20 @@ render() {
          <div className="card-price">
 
              <h2 className="price">
-                 <span className="price__currency">$</span>
+                 <span className="price__currency">€</span>
                  <span className="price__dollar">{dollar}</span>.
                  <span className="price__cent">{cent}</span>
              </h2>
 
              <p className="price-desc">{this.props.generic.priceDesc}</p>
-
+             <hr></hr>
+             <a className={'bttn bttn-' + this.props.btnClass} href={this.props.generic.ctaLinkPrefix + this.props.pricingData.billingCode}>{this.props.generic.ctaText}</a>
               <p className="price-overview">{this.props.pricingData.priceOverview}</p>
 
               <p className="description">{this.props.common.description}</p>
 
          </div>
-<a className={'bttn bttn-' + this.props.btnClass} href={this.props.generic.ctaLinkPrefix + this.props.pricingData.billingCode}>{this.props.generic.ctaText}</a>
+
     </div>
   );
 }
