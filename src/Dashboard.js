@@ -167,7 +167,7 @@ function Dashboard() {
           <Modal.Title>Generated report</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Image src={raport}></Image>
+          <Image width="100%" src={raport}></Image>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
