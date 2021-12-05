@@ -313,7 +313,29 @@ export const elements = [
         "quantity": "1",
         "footprint": "-16.3",
         "category": "actions"
+    },
+    {
+        "id": 46,
+        "name": "Asus Notebook",
+        "quantity": "1",
+        "footprint": "113",
+        "category": "computers"
+    },
+    {
+        "id": 47,
+        "name": "Macbook",
+        "quantity": "1",
+        "footprint": "185",
+        "category": "computers"
+    },
+    {
+        "id": 47,
+        "name": "Dell chromebook",
+        "quantity": "1",
+        "footprint": "266",
+        "category": "computers"
     }
+
     ]
 
 
