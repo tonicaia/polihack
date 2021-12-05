@@ -55,9 +55,16 @@ function Calculator(props) {
     const currentItem = list.find(list => list.name === item)
     setItem(currentItem)
     if (currentItem) {
-      const betterItem = list.find(el => el.footprint < currentItem.footprint)
+      const betterItem = list.find(el => parseFloat(el.footprint) < parseFloat(currentItem.footprint))
       setBetterItem(betterItem)
-      const worstItem = list.find(el => el.footprint > currentItem.footprint)
+      const worstItem = list.find(el => parseFloat(el.footprint) > parseFloat(currentItem.footprint))
+      setWorstItem(worstItem)
+    }
+
+    if (currentItem.category === "computers") {
+      const betterItem = list.find(el => parseFloat(el.footprint) < parseFloat(currentItem.footprint) && el.category === currentItem.category)
+      setBetterItem(betterItem)
+      const worstItem = list.find(el => parseFloat(el.footprint) > parseFloat(currentItem.footprint) && el.category === currentItem.category)
       setWorstItem(worstItem)
     }
   }
