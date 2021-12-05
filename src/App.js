@@ -61,7 +61,7 @@ function App() {
     <Navbar.Brand href="/">WasteCan</Navbar.Brand>
     <Nav className="me-auto">
       <div className="d-flex nav-main-sections">
-        {user && !loading && <Nav.Link href="calculator">Calculator</Nav.Link>}
+        {user && !loading && <Nav.Link href="calculator">Convertor</Nav.Link>}
         {user && !loading && <Nav.Link href="statistics">Statistics</Nav.Link>}
         <Nav.Link href="pricing">Pricing</Nav.Link>
         {user && !loading && <Nav.Link href="news">Be aware !</Nav.Link>}

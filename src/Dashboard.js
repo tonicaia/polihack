@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect } from 'react';
 import ApexCharts from 'apexcharts'
 import Chart from 'react-apexcharts'
-import { Card, ListGroup, Row, Col, Container, Toast, Button, ToastContainer, Accordion, Image } from 'react-bootstrap'
+import { Card, ListGroup, Row, Col, Container, Toast, Button, ToastContainer, Accordion, Image, Modal } from 'react-bootstrap'
 import './Dashboard.css'
 import week from './assets/1w.png'
 import month from './assets/1m.png'
@@ -13,6 +13,7 @@ import firebase from 'firebase/compat/app';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
+import raport from "./assets/raport.png"
 
 firebase.initializeApp({
   apiKey: "AIzaSyCr7AIVDHhdi5fzKQqKt_kYz7-lWp5JvFk",
@@ -89,6 +90,11 @@ function Dashboard() {
   let entitiesGroupedByCategory = [];
   let entitiesGroupedByElements = [];
 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const prepareData = () => {
     let categoryOptions = { labels: [] }
     let categorySeries = []
@@ -155,7 +161,23 @@ function Dashboard() {
   const [categoryOptionsPie, categorySeriesPie, elementOptionsPie, elementSeriesPie, seriesDonut] = prepareData()
 
   return (
-    <div>
+    <div style={{padding:"5%"}}>
+       <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Generated report</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Image src={raport}></Image>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Print
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <br />
       <h1>Personal statistics:</h1>
       <div style={{ height: "50px" }}></div>
@@ -167,9 +189,10 @@ function Dashboard() {
           </Col>
           <Col lg={4}>
             <Card style={{ width: '18rem' , float: "right"}}>
+              <Button onClick={handleShow}>Generate report</Button>
               {entitiesGroupedByElements && <Accordion defaultActiveKey="0">
                 <Accordion.Item eventKey="0">
-                  <Accordion.Header>Top polution sources</Accordion.Header>
+                  <Accordion.Header>Top pollution sources</Accordion.Header>
                   <Accordion.Body>
                     <ListGroup variant="flush">
                       {entitiesGroupedByElements.filter(item => item.totalFootprint > 0).map((item, key) => {
